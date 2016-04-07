@@ -3,7 +3,7 @@
 	<cfsetting requesttimeout="600">
 
 	<cfscript>
-		this.version = 4; // last change 3-18-2016, created 2-22-2016 by Max Kuklin
+		this.version = 5; // last change 4-07-2016, created 2-22-2016 by Max Kuklin
 
 		this.master_server = ["example.com", "127.0.0.1"];
 
@@ -56,7 +56,7 @@
 				</cfloop>
 			</select>
 			<input type="text" name="branch" id="branch" value="#form.branch#" placeholder="branch name" required>
-			<input type="text" name="commit" value="#form.commit#" placeholder="commit SHA hash (optional)" style="width:350px">
+			<input type="text" name="commit" value="#form.commit#" placeholder="commit SHA hash or tag name (optional)" style="width:350px">
 			<input type="submit" name="update" id="update" value="Update">
 		</form>
 
@@ -85,6 +85,7 @@
 			fetch origin #arguments.branch# --verbose
 			checkout -f --track -B #arguments.branch# remotes/origin/#arguments.branch#
 			<cfif arguments.commit neq "">
+				fetch origin tag #arguments.commit# --verbose
 				reset --hard #arguments.commit#
 			</cfif>
 			show -s

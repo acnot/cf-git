@@ -57,7 +57,7 @@ The following list of settings can be found in the *gitbot.cfc*:
 
 The URL of the page is `http://<your_main_server>/gitbot.cfc?method=page`
 
-A simple html form allows you to select site and branch which you want to upload into the site directory. Optionally you can specify a commit hash, useful when you want quickly revert unwanted commits on production and take some time to prepare a fix.
+A simple html form allows you to select site and branch which you want to upload into the site directory. Optionally you can specify commit hash or tag name, useful when you want quickly revert unwanted commits on production and take some time to prepare a fix.
 
 The hardcoded git commands will discard any local changes for versioned files on your site, unversioned files will stay.
 
